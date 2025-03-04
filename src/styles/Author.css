@@ -1,0 +1,13 @@
+.author-container {
+    display: flex;
+    padding: 30px;
+}
+
+.user-img {
+    width: 100px;
+    height: 100px;
+}
+
+p {
+    padding: 15px;
+}

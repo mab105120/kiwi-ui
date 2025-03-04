@@ -1,13 +1,15 @@
 import PropTypes from "prop-types";
+import '../../styles/Home.css';
 
-const Home = ({ user }) => {
+const Home = () => {
     return (<>
-        <h1>Welcome home {user.user}</h1>
+        <h1>hello</h1>
     </>);
 }
 
 Home.propTypes = {
-    user: PropTypes.object.isRequired
+    user: PropTypes.object.isRequired,
+    onLogout: PropTypes.object.isRequired,
 }
 
 export default Home;
