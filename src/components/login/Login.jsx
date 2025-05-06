@@ -13,22 +13,31 @@ const Login = ({ setUser }) => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        if (username === 'admin' && password === 'admin') {
-            setUser((prevState) => ({
-                ...prevState,
-                user: username,
-                isLoggedIn: true,
-            }));
-            navigate('/home');
-        } else {
-            setUser((prevState) => ({
-                ...prevState,
-                isLoggedIn: false,
-            }));
-            toast.error('Login failed! Please make sure your username and password are correct then retry.', {
-                autoClose: false,
-            });
-        }
+        const base_url = 'http://127.0.0.1:5000'
+        const url = `${base_url}/user/authenticate-user/${username}/${password}`
+        fetch(url).then(res => {
+            if (!res.ok) {
+                setUser((prevState) => ({
+                    ...prevState,
+                    isLoggedIn: false,
+                }));
+                toast.error('Login failed! Please make sure your username and password are correct then retry.', {
+                    autoClose: false,
+                });
+            } else {
+                res.json().then(data => {
+                    setUser((prevState) => ({
+                        ...prevState,
+                        user: data.username,
+                        userId: data.id,
+                        isLoggedIn: true,
+                    }));
+                    navigate('/home');
+                })
+            }
+        }).catch((error) => {
+            toast.error(`Failed to authenticate user ${username}: ${error}`)
+        })
     }
 
     return (

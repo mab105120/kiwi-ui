@@ -1,0 +1,29 @@
+.investments-container {
+    margin-top: 20px;
+}
+
+.investments-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+.investments-table th,
+.investments-table td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: left;
+}
+
+.investments-table th {
+    background-color: #f4f4f4;
+    font-weight: bold;
+}
+
+.investments-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.investments-table tr:hover {
+    background-color: #f1f1f1;
+}
